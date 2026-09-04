@@ -1,0 +1,220 @@
+/* ==========================================================
+   Só uma Palhinha — página do produto
+   Paleta e tipografia conforme o manual de marca, versão 1.
+   Marrom #4A3328 · Vermelho #950101 · Palha #E5D4BF · Creme #F5EDE2
+   Anton em título, Karla em texto. Nenhuma terceira fonte.
+   ========================================================== */
+:root{
+  --marrom:#4A3328;
+  --marrom-fundo:#3A2820;
+  --vermelho:#950101;
+  --vermelho-fundo:#7A0101;
+  --palha:#E5D4BF;
+  --creme:#F5EDE2;
+  --tinta:#3A2820;
+  --tinta-suave:#6A5445;
+  --max:1120px;
+  --gutter:clamp(20px, 5vw, 56px);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--creme);color:var(--tinta);
+  font-family:'Karla',system-ui,-apple-system,Helvetica,Arial,sans-serif;
+  font-size:18px;line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit}
+
+h1,h2,h3{
+  font-family:'Anton','Archivo Black',Impact,sans-serif;
+  font-weight:400;text-transform:uppercase;letter-spacing:.004em;
+  line-height:1.06;margin:0;
+}
+h1{font-size:clamp(52px, 9vw, 104px)}
+h2{font-size:clamp(34px, 5.2vw, 58px)}
+h3{font-size:clamp(21px, 2.4vw, 26px);line-height:1.14}
+p{margin:0 0 18px}
+p:last-child{margin-bottom:0}
+
+/* Grifo: inline-block de proposito. Num inline comum a caixa de fundo vem
+   das metricas da fonte, que mudam de navegador para navegador. Como
+   inline-block a altura e padding + entrelinha, previsivel em todo lugar. */
+.grifo{
+  display:inline-block;vertical-align:baseline;
+  line-height:.92;padding:.13em .14em .17em;border-radius:10px;
+  background:var(--vermelho);color:var(--creme);
+}
+.claro .grifo{background:var(--palha);color:var(--marrom)}
+
+.faixa{padding:clamp(64px, 9vw, 120px) var(--gutter)}
+.faixa > .dentro{max-width:var(--max);margin:0 auto}
+.escura{background:var(--marrom);color:var(--palha)}
+.escura h2,.escura h3,.escura strong{color:var(--creme)}
+.palhaBG{background:var(--palha)}
+.rubra{background:var(--vermelho);color:var(--creme)}
+.rubra h2{color:#fff}
+
+.chapeu{
+  font-size:14px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--vermelho);margin-bottom:14px;
+}
+.escura .chapeu{color:var(--palha)}
+.rubra .chapeu{color:rgba(255,255,255,.85)}
+.risco{width:74px;height:7px;border-radius:4px;background:var(--vermelho);margin:22px 0 30px}
+.escura .risco,.rubra .risco{background:var(--palha)}
+
+.lead{font-size:clamp(19px, 2.1vw, 23px);line-height:1.55;max-width:58ch}
+.colunas{columns:2 320px;column-gap:56px;max-width:900px}
+.colunas p{break-inside:avoid}
+
+/* ---------- topo ---------- */
+.topo{
+  position:sticky;top:0;z-index:20;background:rgba(74,51,40,.96);
+  backdrop-filter:saturate(1.2) blur(6px);
+  display:flex;align-items:center;justify-content:space-between;
+  gap:14px;flex-wrap:wrap;
+  padding:12px var(--gutter);
+}
+.topo img{height:34px;width:auto}
+.botao{
+  display:inline-block;background:var(--vermelho);color:var(--creme);
+  font-weight:800;font-size:15px;letter-spacing:.09em;text-transform:uppercase;
+  padding:13px 24px 11px;border-radius:999px;text-decoration:none;
+  transform:rotate(-1.2deg);transition:transform .18s ease, background .18s ease;
+}
+.botao:hover{transform:rotate(0deg) scale(1.03);background:var(--vermelho-fundo)}
+.botao.palido{background:var(--palha);color:var(--marrom)}
+.botao.palido:hover{background:#fff}
+
+/* ---------- hero ---------- */
+.hero{
+  background:var(--marrom);color:var(--palha);
+  padding:clamp(56px, 8vw, 104px) var(--gutter) clamp(64px, 9vw, 110px);
+}
+.hero .dentro{
+  max-width:var(--max);margin:0 auto;
+  display:flex;flex-wrap:wrap;gap:clamp(32px,5vw,64px);align-items:center;
+}
+.hero .texto{flex:1 1 420px;min-width:0}
+.hero .foto{flex:0 1 340px;min-width:0}
+.hero h1{color:var(--creme)}
+.hero .lead{color:var(--palha);margin:26px 0 32px}
+
+
+/* ---------- moldura das fotos ---------- */
+/* As fotos ainda sao provisorias, entao entram pequenas e emolduradas:
+   a moldura assume o instantaneo em vez de fingir foto de estudio. */
+.moldura{
+  background:var(--creme);padding:14px;
+  border-radius:4px;
+  box-shadow:0 14px 34px rgba(58,40,32,.28);
+  transform:rotate(-2deg);
+  max-width:380px;
+}
+.moldura.direita{transform:rotate(1.8deg);margin-left:auto}
+.moldura img{border-radius:2px}
+.moldura figcaption{
+  font-size:13.5px;line-height:1.4;color:var(--tinta-suave);
+  padding:11px 4px 3px;font-weight:600;
+}
+.moldura.mini{max-width:280px}
+
+.galeria{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:clamp(24px,3vw,40px);align-items:start;margin-top:48px;max-width:860px;
+}
+.galeria .moldura{max-width:none}
+.galeria .moldura:nth-child(2){transform:rotate(1.4deg);margin-top:26px}
+.galeria .moldura:nth-child(3){transform:rotate(-1.2deg);margin-top:12px}
+
+/* ---------- blocos ---------- */
+.dupla{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:clamp(32px,5vw,72px);align-items:center;
+}
+
+.passos{counter-reset:p;display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:36px;margin-top:44px}
+.passo{position:relative;padding-top:12px;border-top:3px solid currentColor}
+.passo::before{
+  counter-increment:p;content:counter(p,decimal-leading-zero);
+  font-family:'Anton',Impact,sans-serif;font-size:52px;line-height:1;
+  display:block;margin-bottom:10px;opacity:.28;
+}
+.passo h3{margin-bottom:8px}
+.passo p{font-size:16.5px}
+
+.sabores{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:clamp(28px,4vw,48px);margin-top:44px;
+}
+.sabor{background:var(--creme);padding:26px 26px 30px;border:2px solid rgba(58,40,32,.16)}
+.escura .sabor{background:var(--marrom-fundo);border-color:rgba(229,212,191,.22)}
+.sabor h3{margin-bottom:10px}
+.sabor .selo{
+  display:inline-block;font-size:12.5px;font-weight:800;letter-spacing:.12em;
+  text-transform:uppercase;background:var(--vermelho);color:#fff;
+  padding:5px 12px 4px;border-radius:999px;margin-bottom:14px;
+}
+
+.faq{max-width:820px;margin-top:36px}
+.faq details{border-bottom:2px solid rgba(58,40,32,.16);padding:18px 0}
+.faq summary{
+  font-family:'Anton',Impact,sans-serif;text-transform:uppercase;
+  font-size:clamp(19px,2.2vw,24px);cursor:pointer;list-style:none;
+  display:flex;justify-content:space-between;gap:20px;align-items:baseline;
+}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";color:var(--vermelho);font-size:.9em}
+.faq details[open] summary::after{content:"–"}
+.faq details p{margin-top:14px;font-size:17px}
+
+.rodape{background:var(--marrom-fundo);color:var(--palha);padding:clamp(48px,6vw,76px) var(--gutter) 40px}
+.rodape .dentro{
+  max-width:var(--max);margin:0 auto;display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:40px;
+}
+.rodape img{height:52px;width:auto;margin-bottom:18px}
+.rodape .miudo{font-size:14.5px;line-height:1.6;color:rgba(229,212,191,.78)}
+.rodape a{text-decoration:underline;text-underline-offset:3px}
+
+/* ---------- animação de rolagem ---------- */
+.surge{opacity:0;transform:translateY(26px);transition:opacity .7s ease, transform .7s cubic-bezier(.22,.7,.3,1)}
+.surge.dentroDaTela{opacity:1;transform:none}
+.surge[data-atraso="1"]{transition-delay:.09s}
+.surge[data-atraso="2"]{transition-delay:.18s}
+.surge[data-atraso="3"]{transition-delay:.27s}
+/* ---------- telas pequenas ---------- */
+@media (max-width:860px){
+  body{font-size:17px}
+  /* Foto centralizada e sem lado preferido quando a coluna some. */
+  .moldura,.moldura.direita{margin-left:auto;margin-right:auto;transform:rotate(-1.4deg)}
+  .hero .dentro{gap:40px}
+  .hero .lead{margin:22px 0 28px}
+  .dupla{gap:36px}
+  .passos{gap:28px}
+  .galeria{margin-top:36px}
+  .galeria .moldura:nth-child(2),
+  .galeria .moldura:nth-child(3){margin-top:0}
+}
+@media (max-width:520px){
+  .topo{padding:10px 18px}
+  .topo img{height:28px}
+  .botao{font-size:13.5px;padding:11px 18px 9px;letter-spacing:.07em}
+  .moldura{padding:10px;box-shadow:0 8px 20px rgba(58,40,32,.24)}
+  .moldura figcaption{font-size:13px}
+  .risco{width:60px;height:6px;margin:18px 0 24px}
+  .sabor{padding:22px 20px 24px}
+  .faq summary{gap:12px}
+  .passo::before{font-size:44px}
+  /* Rotacao some no celular: em tela estreita ela vira torto, nao charme. */
+  .moldura,.moldura.direita,.galeria .moldura{transform:none}
+  .botao{transform:none}
+}
+
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  .surge{opacity:1;transform:none;transition:none}
+  .botao{transition:none}
+}
